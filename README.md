@@ -36,15 +36,19 @@ OpenLoom is a self-hosted alternative — record screen + camera in the browser,
 
 You need: a Linux server, Docker, a domain name ($10 on Cloudflare), two DNS A-records.
 
+### The easy way
+
+Open this repo in [Cursor](https://cursor.com) and ask: *"Deploy OpenLoom to my server at `ip-address`"*. It will SSH in, run the installer, troubleshoot if anything goes wrong, and tell you when it's ready. This whole project was built in Cursor — it knows the codebase.
+
+### Manual install
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/DukeDeSouth/OpenLoom/main/install.sh | bash
 ```
 
-The script handles everything: checks your server, creates swap if RAM is low, verifies DNS, sets up HTTPS, builds and starts.
+The script checks your server, creates swap if RAM is low, verifies DNS, sets up HTTPS, builds and starts.
 
 Open `https://yourdomain.com` — first user = admin, no invite code.
-
-> **Tip:** Don't want to SSH into servers? Open this project in [Cursor](https://cursor.com) and ask it to deploy for you. You can also ask it to add features, fix bugs, or customize anything — this entire project was built that way.
 
 ## Features
 
