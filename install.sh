@@ -17,7 +17,7 @@ fatal()   { error "$*"; exit 1; }
 
 command_exists() { command -v "$1" &>/dev/null; }
 
-REPO_URL="https://github.com/openloom/OpenLoom.git"
+REPO_URL="https://github.com/DukeDeSouth/OpenLoom.git"
 INSTALL_DIR="${OPENLOOM_DIR:-$HOME/openloom}"
 
 # ── Banner ───────────────────────────────────────

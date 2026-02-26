@@ -16,8 +16,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/openloom/OpenLoom?color=blue" alt="License" />
-  <img src="https://img.shields.io/github/stars/openloom/OpenLoom?style=social" alt="Stars" />
+  <img src="https://img.shields.io/github/license/DukeDeSouth/OpenLoom?color=blue" alt="License" />
+  <img src="https://img.shields.io/github/stars/DukeDeSouth/OpenLoom?style=social" alt="Stars" />
 </p>
 
 ---
@@ -28,23 +28,23 @@
 
 ## What is this
 
-Loom charges $12.50/user/month. Your videos live on their servers.
+Screen recording tools are either expensive SaaS or don't let you own the data.
 
-OpenLoom is the same thing — on your server, for free. Record screen + camera in the browser, get a shareable link, done.
+OpenLoom is a self-hosted alternative — record screen + camera in the browser, get a shareable link, keep everything on your server.
 
 ## Quick Start
 
 You need: a Linux server, Docker, a domain name ($10 on Cloudflare), two DNS A-records.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/openloom/OpenLoom/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/DukeDeSouth/OpenLoom/main/install.sh | bash
 ```
 
 The script handles everything: checks your server, creates swap if RAM is low, verifies DNS, sets up HTTPS, builds and starts.
 
 Open `https://yourdomain.com` — first user = admin, no invite code.
 
-> **Tip:** If you want to modify or extend OpenLoom, open the project in [Cursor](https://cursor.com) and tell it what you want. This entire project was built that way.
+> **Tip:** Don't want to SSH into servers? Open this project in [Cursor](https://cursor.com) and ask it to deploy for you. You can also ask it to add features, fix bugs, or customize anything — this entire project was built that way.
 
 ## Features
 
@@ -80,7 +80,7 @@ Open `https://yourdomain.com` — first user = admin, no invite code.
 ### Install
 
 ```bash
-git clone https://github.com/openloom/OpenLoom.git
+git clone https://github.com/DukeDeSouth/OpenLoom.git
 cd OpenLoom
 ./install.sh
 ```

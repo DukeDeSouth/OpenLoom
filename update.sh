@@ -56,7 +56,7 @@ if [ -d ".git" ]; then
   git pull origin main || fatal "git pull failed. Check your network and try again."
 else
   fatal "Not a git repository. Re-install:
-  curl -fsSL https://raw.githubusercontent.com/openloom/OpenLoom/main/install.sh | bash"
+  curl -fsSL https://raw.githubusercontent.com/DukeDeSouth/OpenLoom/main/install.sh | bash"
 fi
 
 # ── Remove dev override if present ───────────────
