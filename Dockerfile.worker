@@ -1,0 +1,43 @@
+ARG ENABLE_WHISPER=true
+
+FROM debian:bookworm-slim AS whisper-builder
+ARG ENABLE_WHISPER
+ARG WHISPER_MODEL=base
+
+RUN if [ "$ENABLE_WHISPER" = "true" ]; then \
+      apt-get update && apt-get install -y --no-install-recommends \
+        build-essential cmake git wget ca-certificates && \
+      rm -rf /var/lib/apt/lists/* && \
+      git clone --depth 1 https://github.com/ggerganov/whisper.cpp /whisper && \
+      cd /whisper && \
+      cmake -B build -DCMAKE_BUILD_TYPE=Release && \
+      cmake --build build --config Release -j$(nproc) && \
+      mkdir -p /whisper/models && \
+      wget -q -O /whisper/models/ggml-${WHISPER_MODEL}.bin \
+        https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-${WHISPER_MODEL}.bin; \
+    else \
+      mkdir -p /whisper/build/bin /whisper/models && \
+      touch /whisper/build/bin/whisper-cli /whisper/models/ggml-placeholder.bin; \
+    fi
+
+FROM node:20-bookworm-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=whisper-builder /whisper/build/bin/whisper-cli /usr/local/bin/whisper-cpp
+COPY --from=whisper-builder /whisper/models/ /models/
+
+WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY . .
+RUN npx prisma generate
+
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs worker
+
+USER worker
+CMD ["npx", "tsx", "src/worker/index.ts"]

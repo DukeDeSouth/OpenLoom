@@ -1,0 +1,16 @@
+{
+  "name": "OpenLoom",
+  "short_name": "OpenLoom",
+  "description": "Self-hosted video messaging for teams",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050510",
+  "theme_color": "#3b82f6",
+  "icons": [
+    { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/icon-192-maskable.png", "type": "image/png", "sizes": "192x192", "purpose": "maskable" },
+    { "src": "/icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

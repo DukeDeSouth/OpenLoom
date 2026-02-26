@@ -1,0 +1,24 @@
+# Dev overrides — opens extra ports for local development.
+# Docker Compose auto-merges this file when present.
+# Delete or rename this file in production.
+
+services:
+  caddy:
+    profiles: ["production-only"]
+
+  app:
+    ports:
+      - "${PORT:-3000}:3000"
+
+  db:
+    ports:
+      - "5433:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  minio:
+    ports:
+      - "9000:9000"
+      - "9001:9001"

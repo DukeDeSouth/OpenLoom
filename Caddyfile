@@ -1,0 +1,10 @@
+{$DOMAIN} {
+	reverse_proxy app:3000
+}
+
+{$S3_DOMAIN} {
+	request_body {
+		max_size 5GB
+	}
+	reverse_proxy minio:9000
+}
